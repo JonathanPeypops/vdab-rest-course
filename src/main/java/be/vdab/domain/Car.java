@@ -9,25 +9,33 @@ import javax.persistence.Id;
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private String brand;
-    private String model;
     private String color;
+    private String licensePlate;
 
     public Car() {
     }
 
-    public Car(String brand, String model, String color) {
+    public Car(String brand, String color, String licensePlate) {
         this.brand = brand;
-        this.model = model;
         this.color = color;
+        this.licensePlate = licensePlate;
     }
 
-    public int getId() {
+    public String getLicensePlate() {
+        return licensePlate;
+    }
+
+    public void setLicensePlate(String licensePlate) {
+        this.licensePlate = licensePlate;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -37,14 +45,6 @@ public class Car {
 
     public void setBrand(String brand) {
         this.brand = brand;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
     }
 
     public String getColor() {
@@ -57,6 +57,6 @@ public class Car {
 
     @Override
     public String toString(){
-        return brand + " " + model + " " + color;
+        return brand + " " +  color;
     }
 }
