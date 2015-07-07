@@ -1,23 +1,22 @@
 package be.vdab.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String brand;
+    @ManyToOne()
+    private Brand brand = getBrand();
     private String color;
     private String licensePlate;
 
     public Car() {
     }
 
-    public Car(String brand, String color, String licensePlate) {
+
+    public Car(Brand brand, String color, String licensePlate) {
         this.brand = brand;
         this.color = color;
         this.licensePlate = licensePlate;
@@ -39,11 +38,7 @@ public class Car {
         this.id = id;
     }
 
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
+    public void setBrand(Brand brand) {
         this.brand = brand;
     }
 
@@ -55,8 +50,12 @@ public class Car {
         this.color = color;
     }
 
-    @Override
-    public String toString(){
-        return brand + " " +  color;
+    public Brand getBrand() {
+        return brand;
     }
+
+//    @Override
+//    public String toString(){
+//        return brand + " " + model + " " + color;
+//    }
 }

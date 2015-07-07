@@ -16,17 +16,4 @@ public class Launcher {
     public static void main(String[] args) {
        ApplicationContext applicationContext = SpringApplication.run(Launcher.class);
     }
-    @Bean
-    public DataSource dataSource(){
-        return new DriverManagerDataSource("jdbc:mysql://localhost:3306/cars","root","");
-    }
-
-    @Bean
-    public JpaVendorAdapter jpaVendorAdapter(){
-        HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
-        hibernateJpaVendorAdapter.setShowSql(false);
-        hibernateJpaVendorAdapter.setGenerateDdl(true);
-        hibernateJpaVendorAdapter.setDatabase(Database.MYSQL);
-        return hibernateJpaVendorAdapter;
-    }
 }
