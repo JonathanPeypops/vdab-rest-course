@@ -29,6 +29,11 @@ public class CarService {
     }
 
     @RequestMapping(value = "{carId}", method = DELETE)
-    public void deleteCar(@PathVariable("carId")Integer id)
-    {carRepository.delete(id);}
+    public void deleteCar(@PathVariable("carId")Integer carId)
+    {carRepository.delete(carId);}
+
+    @RequestMapping(value = "update/car", method = PUT, consumes = APPLICATION_JSON_VALUE)
+    public void edit(@RequestBody Car car){
+        carRepository.save(car);
+    }
 }
